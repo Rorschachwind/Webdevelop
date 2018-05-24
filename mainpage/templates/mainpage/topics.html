@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+
+{% extends "mainpage/base.html" %}
+{% block header %}
+  <h1 style = "font-size: 25px;">Topics</h1>
+{% endblock header %}
+
+
+{% block content %}
+
+  <ul>
+    {% for topic in topics %}
+      <li>
+        <h3 style = "font-size: 20px;">
+          <a href="{% url 'mainpage:topic' topic.id %}">{{topic}}</a>
+        </h3>
+      </li>
+    {% empty %}
+      <li>There is no new topic</li>
+    {% endfor %}
+  </ul>
+
+<h3 style = "font-size: 20px;">
+  <a href = "{% url 'mainpage:new_topic' %}">Add a new topic</a>
+</h3>
+
+{% endblock content %}

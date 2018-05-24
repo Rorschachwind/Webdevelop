@@ -1,0 +1,36 @@
+{% extends 'mainpage/base.html' %}
+
+{% block header %}
+  <h2 style = "font-size: 25px;">{{ topic }}</h2>
+{% endblock header %}
+
+{% block content %}
+
+<h3 style = "font-size: 20px;">Entries</h3>
+  <p>
+    <a href = "{% url 'mainpage:new_entry' topic.id %}">Add new entry</a>
+  </p>
+
+
+{% for entry in entries %}
+
+<div class = "panel panel-default">
+  <div class = "panel-heading">
+    <h3 style = "font-size: 20px;">
+      {{ entry.date_added|date:'M d, Y H:i' }}
+      <small>
+        <a href = "{% url 'mainpage:edit_entry' entry.id %}">edit entry</a>
+      </small>
+    </h3>
+  </div>
+
+  <div class = "panel-body">
+    {{ entry.text|linebreaks }}
+  </div>
+</div>
+
+{% empty %}
+    There is no entries for the topic.
+{% endfor %}
+
+{% endblock content %}

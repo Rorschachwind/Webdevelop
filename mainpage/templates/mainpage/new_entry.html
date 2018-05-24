@@ -1,0 +1,25 @@
+{% extends "mainpage/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+  <h1 style = "font-size: 25px;">
+  	<a href = "{% url 'mainpage:topic' topic.id %}">{{ topic }}</a>
+  </h1>
+  <h2 style = "font-size: 20px;">
+  	Add a new entry:
+  </h2>
+{% endblock header %}
+
+{% block content %}
+
+  <form action = "{% url 'mainpage:new_entry' topic.id %}" method = 'post' class = "form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% buttons %}
+    	<button name = "submit" class = "btn btn-primary">add entry</button>
+    {% endbuttons %}
+
+  </form>
+
+{% endblock content %}

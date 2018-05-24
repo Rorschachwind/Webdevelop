@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends "mainpage/base.html" %}
+
+{% block header %}
+  <div class = "jumbotron">
+  	<h1 style = "font-size:25px;text-align:center;" >Keep Track on Everything Interesting!</h1>
+  </div>
+{% endblock header %}
+
+{% block content %}
+<h2 style = "font-size:20px;text-align:center;">
+	<a href = "{% url 'users:register' %}">Register Here!</a> Record things you love.
+</h2>
+<h2 style = "font-size:20px;text-align:center;">
+	Start from April, my treasured things.
+</h2>
+{% endblock content %}
+
+</html>
