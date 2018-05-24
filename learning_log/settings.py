@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&hu9m6)%6psp7d553*21^*0)%_%org-_+=%ci7*iv4+x_+uxss'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['treasurethings.herokuapp.com']
 
 
 # Application definition
@@ -145,4 +145,3 @@ if os.getcwd() == '/app':
 		os.path.join(BASE_DIR,'static'),
 	)
 
-DISABLE_COLLECTSTATIC=1
