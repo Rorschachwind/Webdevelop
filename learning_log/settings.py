@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&hu9m6)%6psp7d553*21^*0)%_%org-_+=%ci7*iv4+x_+uxss'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['treasurethings.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -137,7 +137,8 @@ if os.getcwd() == '/app':
 
 	SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO','https')
 
-	ALLOWED_HOSTS = ['*']
+	ALLOWED_HOSTS = ['treasurethings.herokuapp.com']
+	DEBUG = False
 
 	BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 	STATIC_ROOT = 'staticfiles'
