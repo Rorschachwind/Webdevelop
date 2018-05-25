@@ -13,7 +13,7 @@
     {% for topic in topics %}
       <li>
         <h3 style = "font-size: 20px;">
-          <a href="{% url 'mainpage:topic' topic.id %}">{{topic}}</a>
+          <a href="{% url 'mainpage:topic' topic.id %}" style = "color: #8FBC8F;">{{topic}}</a>
         </h3>
       </li>
     {% empty %}
@@ -22,7 +22,7 @@
   </ul>
 
 <h3 style = "font-size: 20px;">
-  <a href = "{% url 'mainpage:new_topic' %}">Add a new topic</a>
+  <a href = "{% url 'mainpage:new_topic' %}" style = "color: #2F4F4F;">Add a new topic</a>
 </h3>
 
 {% endblock content %}

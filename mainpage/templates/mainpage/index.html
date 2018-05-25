@@ -3,16 +3,21 @@
 
 {% block header %}
   <div class = "jumbotron">
-  	<h1 style = "font-size:25px;text-align:center;" >Keep Track on Everything Interesting!</h1>
+  	<h1 style = "font-size:45px;text-align:left; color: #2F4F4F">WELCOME.</h1>
+  	<p class = "lead">Nobody knows who I really am, maybe they just don't give a damn.</p>
+  	<p class = "lead">But if I ever need someone to come along, I know you would follow me, and keep me strong.</p>
+  	<hr class = "my-4">
+  	<p> Someday.</p>
   </div>
 {% endblock header %}
 
 {% block content %}
+
 <h2 style = "font-size:20px;text-align:center;">
-	<a href = "{% url 'users:register' %}">Register Here!</a> Record things you love.
+	<a href = "{% url 'users:register' %}" style = "color: #2F4F4F;">Register Here</a>
 </h2>
 <h2 style = "font-size:20px;text-align:center;">
-	Start from April, my treasured things.
+	Start from April, treasured things.
 </h2>
 {% endblock content %}
 

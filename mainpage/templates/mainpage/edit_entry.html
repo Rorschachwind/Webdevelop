@@ -3,10 +3,10 @@
 
 {% block header %}
   <h1 style = "font-size: 25px;">
-  	<a href = "{% url 'mainpage:topic' topic.id %}">{{ topic }}</a>
+  	<a href = "{% url 'mainpage:topic' topic.id %}" style = "color: #000000;">{{ topic }}</a>
   </h1>
   <h2 style = "font-size: 20px;">
-  	Edit entry:
+  	Edit entry
   </h2>
 {% endblock header %}
 
@@ -18,7 +18,7 @@
     {% bootstrap_form form %}
 
     {% buttons %}
-    	<button name = "submit" class = "btn btn-primary">save changes</button>
+    	<button name = "submit" class = "btn btn-primary" style = "background-color: #2F4F4F;">save changes</button>
     {% endbuttons %}
 
   </form>

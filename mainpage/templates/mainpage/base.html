@@ -16,31 +16,34 @@
 
   <body>
   	
-  	<nav class = "navbar navbar-default navbar-static-top" >
+  	<nav class = "navbar navbar-default navbar-static-top" style = "background-color: #2F4F4F;">
   		<div class = "container">
 	  		<div class = "navbar-header">
 	  			<button type = "button" class = "navbar-toggle collapsed" data-toggle = "collapse" data-target = "#navbar" aria-expanded = "false" aria-controls = "navbar">
 	  			</button>
-	  			<a class = "navbar-brand" href = "{% url 'mainpage:index' %}">Mainpage</a>
+	  			<a class = "navbar-brand" href = "{% url 'mainpage:index' %}" style = "color: #8FBC8F;">HOME</a>
+
 	  		</div>
 
 	  		<div id = "navbar" class = "navbar-collapse collapse">
 	  			<ul class = "nav navbar-nav">
-	  				<li><a href = "{% url 'mainpage:topics' %}">Topics</a></li>
+	  				<li><a href = "{% url 'mainpage:topics' %}" style = "color: #8FBC8F;">TOPICS</a></li>
 	  			</ul>
 
 	  			<ul class ="nav navbar-nav navbar-right">
 	  				{% if user.is_authenticated %}
-	  				  <li><a>Hello,{{user.username}}.</a></li>
-	  				  <li><a href  = "{% url 'users:logout' %}">log out</a></li>
+	  				  <li><a style = "color: #8FBC8F;">Hello,{{user.username}}.</a></li>
+	  				  <li><a href  = "{% url 'users:logout' %}" style = "color: #8FBC8F;">LOG OUT</a></li>
 	  				{% else %}
-	  				  <li><a href  = "{% url 'users:register' %}">register</a></li>
-	  				  <li><a href  = "{% url 'users:login' %}">log in</a></li>
+	  				  <li><a href  = "{% url 'users:register' %}" style = "color: #8FBC8F;">REGISTER</a></li>
+	  				  <li><a href  = "{% url 'users:login' %}" style = "color: #8FBC8F;">LOG IN</a></li>
 	  				{% endif %}
 	  			</ul>
 	  		</div>
 	  	</div>
 	</nav>
+
+	
  
  	<div class = "container">
 

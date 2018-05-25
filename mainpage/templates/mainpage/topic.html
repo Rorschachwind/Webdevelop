@@ -8,18 +8,18 @@
 
 <h3 style = "font-size: 20px;">Entries</h3>
   <p>
-    <a href = "{% url 'mainpage:new_entry' topic.id %}">Add new entry</a>
+    <a href = "{% url 'mainpage:new_entry' topic.id %}" style = "color: #2F4F4F;">Add new entry</a>
   </p>
 
 
 {% for entry in entries %}
 
 <div class = "panel panel-default">
-  <div class = "panel-heading">
-    <h3 style = "font-size: 20px;">
+  <div class = "panel-heading" style = "background-color: #2F4F4F;">
+    <h3 style = "font-size: 20px; color: #8FBC8F;">
       {{ entry.date_added|date:'M d, Y H:i' }}
       <small>
-        <a href = "{% url 'mainpage:edit_entry' entry.id %}">edit entry</a>
+        <a href = "{% url 'mainpage:edit_entry' entry.id %}" style = "color: #FFFFF0;">edit entry</a>
       </small>
     </h3>
   </div>
