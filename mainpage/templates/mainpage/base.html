@@ -25,10 +25,27 @@
 
 	  		</div>
 
-	  		<div id = "navbar" class = "navbar-collapse collapse">
-	  			<ul class = "nav navbar-nav">
-	  				<li><a href = "{% url 'mainpage:topics' %}" style = "color: #8FBC8F;">TOPICS</a></li>
-	  			</ul>
+
+	  		<div id = "navbar" class = "navbar-collapse collapse" id = "navbarNavDropdown">
+	  	 		<ul class = "nav navbar-nav">
+	  				<li class = "nav-item dropdown">
+
+	  					<a class="nav-link dropdown-toggle" href="mainpage:index" id="navbarDropdownMenuLink" data-toggle="dropdown" role = "button" aria-haspopup="true" aria-expanded="false" style = "color: #8FBC8F;"><span class = "caret"></span>
+	  						TOPICS
+	  					</a>
+	  					
+					        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style = "background-color: #2F4F4F;">
+					        	{% if user.is_authenticated %}
+						          	{% for topic in topics %}
+								       
+								          <li><a class = "dropdown-item" href="{% url 'mainpage:topic' topic.id %}" style = "font-size:15px; text-transform: uppercase; color: #8FBC8F;">{{topic}}</a></li>	
+					        						  								 
+								    {% endfor %}
+								{% endif %}
+					        </ul>
+					   
+	  				</li>
+	  			</ul>  
 
 	  			<ul class ="nav navbar-nav navbar-right">
 	  				{% if user.is_authenticated %}

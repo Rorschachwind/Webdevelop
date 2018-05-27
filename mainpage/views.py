@@ -10,28 +10,36 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def index(request):
-	return render(request,'mainpage/index.html')
+	if request.user.is_authenticated():		
+		topics = Topic.objects.filter(owner = request.user).order_by('date_added')
+		context = {'topics':topics}
+		return render(request,'mainpage/index.html',context)
+	else:
+		return render(request,'mainpage/index.html')
 
+# This is not used now
 @login_required
 def topics(request):
 	topics = Topic.objects.filter(owner = request.user).order_by('date_added')
 	context = {'topics':topics}
-	return render(request,'mainpage/topics.html',context)
+	#return render(request,'mainpage/topics.html',context)
+	return render(request,'mainpage/base.html',context)
 
 @login_required
 def topic(request,topic_id):
+	topics = Topic.objects.filter(owner = request.user).order_by('date_added')
 	topic = get_object_or_404(Topic,id = topic_id)
 #	topic = Topic.objects.get(id = topic_id)
 	if topic.owner != request.user:
 		raise Http404
 
 	entries = topic.entry_set.order_by('-date_added')
-	context = {'topic':topic, 'entries':entries}
+	context = {'topic':topic, 'entries':entries, 'topics':topics}
 	return render(request,'mainpage/topic.html',context)
 
 @login_required
 def new_topic(request):
-	
+	topics = Topic.objects.filter(owner = request.user).order_by('date_added')
 	if request.method != 'POST':
 		form = TopicForm()
 	else:
@@ -41,11 +49,12 @@ def new_topic(request):
 			new_topic.owner = request.user
 			new_topic.save()
 			return HttpResponseRedirect(reverse('mainpage:topics'))
-	context = {'form':form}
+	context = {'form':form,'topics':topics}
 	return render(request,'mainpage/new_topic.html',context)
 
 @login_required
 def new_entry(request,topic_id):
+	topics = Topic.objects.filter(owner = request.user).order_by('date_added')
 	topic = Topic.objects.get(id = topic_id)
 	if topic.owner != request.user:
 		raise Http404
@@ -59,12 +68,12 @@ def new_entry(request,topic_id):
 			new_entry.topic = topic
 			new_entry.save()
 			return HttpResponseRedirect(reverse('mainpage:topic',args=[topic_id]))
-	context = {'topic':topic,'form':form}
+	context = {'topic':topic,'form':form,'topics':topics}
 	return render(request,'mainpage/new_entry.html',context)
 
 @login_required
 def edit_entry(request,entry_id):
-	
+	topics = Topic.objects.filter(owner = request.user).order_by('date_added')
 	entry = Entry.objects.get(id = entry_id)
 	topic = entry.topic
 	if topic.owner != request.user:
@@ -78,5 +87,5 @@ def edit_entry(request,entry_id):
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect(reverse('mainpage:topic',args=[topic.id]))
-	context = {'entry':entry,'topic':topic, 'form':form}
+	context = {'entry':entry,'topic':topic, 'form':form,'topics':topics}
 	return render(request,'mainpage/edit_entry.html',context)

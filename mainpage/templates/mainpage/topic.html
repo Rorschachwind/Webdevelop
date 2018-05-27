@@ -8,7 +8,7 @@
 
 <h3 style = "font-size: 20px;">Entries</h3>
   <p>
-    <a href = "{% url 'mainpage:new_entry' topic.id %}" style = "color: #2F4F4F;">Add new entry</a>
+    <a href = "{% url 'mainpage:new_entry' topic.id %}" style = "color: #2F4F4F;">Add a new entry</a>
   </p>
 
 
@@ -32,5 +32,10 @@
 {% empty %}
     There is no entries for the topic.
 {% endfor %}
+
+<br>
+  <h3 style = "font-size: 20px; text-align: center;">
+    <a href = "{% url 'mainpage:new_entry' topic.id %}" style = "color: #8FBC8F; text-align: center; border-radius: 10px; border: 2px solid #8FBC8F; padding: 10px;">Add a new entry</a>
+  </h3>
 
 {% endblock content %}
