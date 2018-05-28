@@ -35,25 +35,35 @@
 	  					</a>
 	  					
 					        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style = "background-color: #2F4F4F;">
+
 					        	{% if user.is_authenticated %}
+
 						          	{% for topic in topics %}
 								       
 								          <li><a class = "dropdown-item" href="{% url 'mainpage:topic' topic.id %}" style = "font-size:15px; text-transform: uppercase; color: #8FBC8F;">{{topic}}</a></li>	
 					        						  								 
-								    {% endfor %}
+								    {% endfor %}	
+
 								{% endif %}
+								
 					        </ul>
 					   
 	  				</li>
-	  			</ul>  
+	  			</ul> 
 
-	  			<ul class ="nav navbar-nav navbar-right">
+	  			<ul class = "nav navbar-nav">
+	  				{% if user.is_authenticated %}
+	  					<li><a href = "{% url 'mainpage:new_topic' %}" style = "color: #8FBC8F;">NEW TOPIC</a></li>
+	  				{% endif %}
+	  			</ul>
+	  				
+	  			<ul class ="nav nav-pills navbar-right">
 	  				{% if user.is_authenticated %}
 	  				  <li><a style = "color: #8FBC8F;">Hello,{{user.username}}.</a></li>
-	  				  <li><a href  = "{% url 'users:logout' %}" style = "color: #8FBC8F;">LOG OUT</a></li>
+	  				  <li role = "presentation;"><a href  = "{% url 'users:logout' %}" style = "color: #8FBC8F;">LOG OUT</a></li>
 	  				{% else %}
-	  				  <li><a href  = "{% url 'users:register' %}" style = "color: #8FBC8F;">REGISTER</a></li>
-	  				  <li><a href  = "{% url 'users:login' %}" style = "color: #8FBC8F;">LOG IN</a></li>
+	  				  <li role = "presentation;"><a href  = "{% url 'users:register' %}" style = "color: #8FBC8F;">REGISTER</a></li>
+	  				  <li role = "presentation;"><a href  = "{% url 'users:login' %}" style = "color: #8FBC8F;">LOG IN</a></li>
 	  				{% endif %}
 	  			</ul>
 	  		</div>
@@ -73,5 +83,13 @@
  		</div>
  	</div>
 
+
+ 		  		<script type="text/javascript">
+						  				$('ul.nav li.dropdown').hover(function() {
+					  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+					}, function() {
+					  $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+					});
+	  			</script> 
   </body>
 

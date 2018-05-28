@@ -22,8 +22,8 @@ def index(request):
 def topics(request):
 	topics = Topic.objects.filter(owner = request.user).order_by('date_added')
 	context = {'topics':topics}
-	#return render(request,'mainpage/topics.html',context)
-	return render(request,'mainpage/base.html',context)
+	return render(request,'mainpage/topics.html',context)
+	
 
 @login_required
 def topic(request,topic_id):
@@ -37,7 +37,7 @@ def topic(request,topic_id):
 	context = {'topic':topic, 'entries':entries, 'topics':topics}
 	return render(request,'mainpage/topic.html',context)
 
-@login_required
+#@login_required
 def new_topic(request):
 	topics = Topic.objects.filter(owner = request.user).order_by('date_added')
 	if request.method != 'POST':
